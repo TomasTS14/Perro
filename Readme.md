@@ -7,7 +7,7 @@ Contendrá atributos, setters, getters y lo que se os ocurra
 Se pondrá a prueba varios perros instanciados. 
 
 ### Uso:
-
+------------- **Recordad que después de clonar el repositorio (donde sea), podeís**  ***importar el proyecto en Eclipse*** ----------
 - Clonareís este repositorio con `git clone git@github.com:TomasTS14/Perro.git`
 - Podeís ver que se os haya clonado con el repositorio remoto correcto con `git remote -v`.
 - Podeís comprobar cambios que se hayan hecho en el github con `git diff master origin/master`.
