@@ -21,6 +21,7 @@ Podeís agregar aqui ideas que aún no tengaís en código, tanto en local hacie
 ## Comandos GIT:
 - `git init`: iniciliza repositorio, en este caso no hace falta. 
 - `git status`: muestra el estado del repositorio, inicialmente solo *untracked files*.
+- `git diff master origin/master` : Comprueba si hay alguna diferencia entre vuestra versión local y la version remota que tenemos en Github.
 - `git add .`: agrega todo, no useís este o agregará también archivos de config de vuestro eclipse. 
 - `git add src/perro src/usoPerro`: agregará estos dos, apartir de ahora no saldrán en *untracked* sino en *modified* si cambiáis algo. 
 - `git add -u`: Esté agregará solo los archivos que previamente hayan estado trackeados, en caso de haber hecho en el primer **add** con `git add src/perro src/usoPerro` , solo agregará las versiones modificadas de estos.
