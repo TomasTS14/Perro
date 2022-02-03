@@ -13,3 +13,13 @@ Se pondrá a prueba varios perros instanciados.
 - Podeís comprobar cambios que se hayan hecho en el github con `git diff master origin/master`.
 - Si hay algún cambio siempre hacer un `pull` antes de hacer un *commit local* y un `push` o se os desincronizan los commits.
 - Intentar documentar los commits con un comentario y comentarios dentro del mismo codigo.  
+-----------------------------------------------------------------------------------------------
+
+## Comandos GIT:
+- `git init`: iniciliza repositorio, en este caso no hace falta. 
+- `git status`: muestra el estado del repositorio, inicialmente solo *untracked files*.
+- `git add .`: agrega todo, no useís este o agregará también archivos de config de vuestro eclipse. 
+- `git add src/perro src/usoPerro`: agregará estos dos, apartir de ahora no saldrán en *untracked* sino en *modified* si cambiáis algo. 
+- `git add -u`: Esté agregará solo los archivos que previamente hayan estado trackeados, en caso de haber hecho en el primer **add** con `git add src/perro src/usoPerro` , solo agregará las versiones modificadas de estos.
+- `git commit -m""` : Creará un commit con el comentario quepongaís entre las comillas.
+- `git push``: subirá el último **commit** hecho.  
