@@ -6,6 +6,9 @@ Contendrá atributos, setters, getters y lo que se os ocurra
 ### usoPerro: 
 Se pondrá a prueba varios perros instanciados. 
 
+### ideas.md:
+Podeís agregar aqui ideas que aún no tengaís en código, tanto en local haciendo un push como editando el docuemnto desde Github mismo. 
+
 ### Uso:
 ------------- **Recordad que después de clonar el repositorio (donde sea), podeís**  ***importar el proyecto en Eclipse*** ----------
 - Clonais este repositorio con `git clone git@github.com:TomasTS14/Perro.git`
