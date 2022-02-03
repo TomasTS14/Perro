@@ -21,5 +21,5 @@ Se pondrá a prueba varios perros instanciados.
 - `git add .`: agrega todo, no useís este o agregará también archivos de config de vuestro eclipse. 
 - `git add src/perro src/usoPerro`: agregará estos dos, apartir de ahora no saldrán en *untracked* sino en *modified* si cambiáis algo. 
 - `git add -u`: Esté agregará solo los archivos que previamente hayan estado trackeados, en caso de haber hecho en el primer **add** con `git add src/perro src/usoPerro` , solo agregará las versiones modificadas de estos.
-- `git commit -m""` : Creará un commit con el comentario quepongaís entre las comillas.
-- `git push``: subirá el último **commit** hecho.  
+- `git commit -m""` : Creará un commit con el comentario que pongaís entre las comillas.
+- `git push`: subirá el último **commit** hecho.  
