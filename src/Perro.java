@@ -1,4 +1,4 @@
-public class Perro {
+public class Perro implements Comparable <Perro>{
 	private String nombre;
 	private String amo;
 	private int edad;
@@ -21,10 +21,16 @@ public class Perro {
 		this.amo = amo;
 		this.edad = edad;
 		this.color = color;
+		this.herido = false;
+		this.vivo = true;
 	}
 
 	public String getNombre() {
 		return nombre;
+	}
+	
+	public boolean getVivo() {
+		return vivo;
 	}
 
 	public void setNombre(String nombre) {
@@ -61,11 +67,16 @@ public class Perro {
 	
 	public void muerde(Perro perroMordido) {
 		if (perroMordido.herido == false) {
-		perroMordido.herido = true;
+			perroMordido.herido = true;
 		} else {
 			perroMordido.herido = true;
 			perroMordido.vivo = false;
 		}
+	}
+
+	@Override
+	public int compareTo(Perro o) {
+		return this.nombre.compareTo(o.nombre);
 	}
 
 
