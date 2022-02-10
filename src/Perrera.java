@@ -12,7 +12,7 @@ public class Perrera {
 		perreras = new ArrayList<>();
 	}
 
-	public void añadePerro(Perro nuevo) {
+	public void anadePerro(Perro nuevo) {
 		perreras.add(nuevo);
 	}
 
@@ -20,24 +20,24 @@ public class Perrera {
 		perreras.remove(p);
 	}
 
-	public void buscaDueño() {
-		String[] dueños = new String[perreras.size()]; // Creo un array de los dueños (en ejecución)
+	public void buscaDueno() {
+		String[] duenos = new String[perreras.size()]; // Creo un array de los dueï¿½os (en ejecuciï¿½n)
 
-		for (int i = 0; i < dueños.length; i++) // Introduzco los dueños en tiempo de ejecución
-			dueños[i] = (String) perreras.get(i).getAmo();
+		for (int i = 0; i < duenos.length; i++) // Introduzco los dueï¿½os en tiempo de ejecuciï¿½n
+			duenos[i] = (String) perreras.get(i).getAmo();
 
-		String dueño = (String) JOptionPane.showInputDialog(null, "Elige un dueño primero", "Dueño:", 3,
-				null, dueños, null);
-		muestraPerroDueño(dueño);
+		String dueno = (String) JOptionPane.showInputDialog(null, "Elige un dueno primero", "Dueno:", 3,
+				null, duenos, null);
+		muestraPerroDueno(dueno);
 	}
 
-	public void muestraPerroDueño(String dueño) { // Busca y muestra los perros del dueño recibido
+	public void muestraPerroDueno(String dueno) { // Busca y muestra los perros del dueï¿½o recibido
 		String perros = "";
 		for (Perro perro : perreras) {
-			if (perro.getAmo().equals(dueño))
+			if (perro.getAmo().equals(dueno))
 				perros += perro.getNombre() + "\n";
 		}
-		JOptionPane.showMessageDialog(null, perros, "Los perros de: " + dueño, JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, perros, "Los perros de: " + dueno, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public void muestraTodos() { // Muestra todos los perros de la perrera
@@ -67,10 +67,10 @@ public class Perrera {
 		
 		atacante.muerde(mordido);  //Ataque
 		
-		if(!mordido.getVivo()) { //Si ha muerto o si está herido
+		if(!mordido.getVivo()) { //Si ha muerto o si estï¿½ herido
 			JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " +atacante.getNombre() + " y ha muerto");
 			perreras.remove(mordido);
-		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora está herido");
+		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora estï¿½ herido");
 	} 
 	
 	public Perro buscaPerro(String nombre) { //Encuentra y devuelve el perro por su nombre
