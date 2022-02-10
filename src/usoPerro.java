@@ -57,6 +57,8 @@ public class usoPerro {
 				if (!perrera.estaVacia())
 					perrera.atacaPerro();
 				break;
+			
+			default :
 			}
 
 		}
