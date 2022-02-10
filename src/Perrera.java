@@ -21,9 +21,9 @@ public class Perrera {
 	}
 
 	public void buscaDueno() {
-		String[] duenos = new String[perreras.size()]; // Creo un array de los due�os (en ejecuci�n)
+		String[] duenos = new String[perreras.size()]; // Creo un array de los duenios (en ejecucion)
 
-		for (int i = 0; i < duenos.length; i++) // Introduzco los due�os en tiempo de ejecuci�n
+		for (int i = 0; i < duenos.length; i++) // Introduzco los duenios en tiempo de ejecucinin
 			duenos[i] = (String) perreras.get(i).getAmo();
 
 		String dueno = (String) JOptionPane.showInputDialog(null, "Elige un dueno primero", "Dueno:", 3,
@@ -31,7 +31,7 @@ public class Perrera {
 		muestraPerroDueno(dueno);
 	}
 
-	public void muestraPerroDueno(String dueno) { // Busca y muestra los perros del due�o recibido
+	public void muestraPerroDueno(String dueno) { // Busca y muestra los perros del duenio recibido
 		String perros = "";
 		for (Perro perro : perreras) {
 			if (perro.getAmo().equals(dueno))
@@ -67,7 +67,7 @@ public class Perrera {
 		
 		atacante.muerde(mordido);  //Ataque
 		
-		if(!mordido.getVivo()) { //Si ha muerto o si est� herido
+		if(!mordido.getVivo()) { //Si ha muerto o si esta herido
 			JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " +atacante.getNombre() + " y ha muerto");
 			perreras.remove(mordido);
 		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora esta herido");
