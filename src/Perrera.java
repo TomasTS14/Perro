@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.*;
+import java.awt.Image;
 
 public class Perrera {
 
@@ -58,6 +59,12 @@ public class Perrera {
 	}
 	
 	public void atacaPerro() {   //Un perro ataca a otro perro
+
+		ImageIcon iconoPerro = new ImageIcon(Perrera.class.getResource("/dog.png"));
+		Image iconoPerroaCambiar= iconoPerro.getImage();
+		Image iconoPerroFinal = iconoPerroaCambiar.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+		iconoPerro= new ImageIcon(iconoPerroFinal);
+		
 		String[] array = new String [perreras.size()];	
 		for(int i=0;i<perreras.size();i++) //Relleno el array para poder elegir en el desplegable
 			array[i] = perreras.get(i).getNombre();
@@ -65,6 +72,7 @@ public class Perrera {
 		Perro atacante = buscaPerro((String)JOptionPane.showInputDialog(null, "Elige el perro que muerde", "Perro:", 3,null, array, null));
 		Perro mordido = buscaPerro((String)JOptionPane.showInputDialog(null, "Elige el perro que es mordido", "Perro:", 3,null, array, null));	
 		
+		JOptionPane.showMessageDialog(null, ("has mordido a "+mordido.getNombre()),"!!!!!",JOptionPane.INFORMATION_MESSAGE, iconoPerro);
 		atacante.muerde(mordido);  //Ataque
 		
 		if(!mordido.getVivo()) { //Si ha muerto o si esta herido
