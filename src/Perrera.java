@@ -10,7 +10,7 @@ public class Perrera {
 		perreras = new ArrayList<>();
 	}
 
-	public void añadePerro(Perro nuevo) {
+	public void aÃ±adePerro(Perro nuevo) {
 		perreras.add(nuevo);
 	}
 
@@ -18,24 +18,24 @@ public class Perrera {
 		perreras.remove(p);
 	}
 
-	public void buscaDueño() {
-		String[] dueños = new String[perreras.size()]; // Creo un array de los dueños (en ejecución)
+	public void buscaDueÃ±o() {
+		String[] dueÃ±os = new String[perreras.size()]; // Creo un array de los dueï¿½os (en ejecuciï¿½n)
 
-		for (int i = 0; i < dueños.length; i++) // Introduzco los dueños en tiempo de ejecución
-			dueños[i] = (String) perreras.get(i).getAmo();
+		for (int i = 0; i < dueÃ±os.length; i++) // Introduzco los dueï¿½os en tiempo de ejecuciï¿½n
+			dueÃ±os[i] = (String) perreras.get(i).getAmo();
 
-		String dueño = (String) JOptionPane.showInputDialog(null, "Elige un dueño primero", "Dueño:", 3,
-				null, dueños, null);
-		muestraPerroDueño(dueño);
+		String dueÃ±o = (String) JOptionPane.showInputDialog(null, "Elige un dueï¿½o primero", "Dueï¿½o:", 3,
+				null, dueÃ±os, null);
+		muestraPerroDueÃ±o(dueÃ±o);
 	}
 
-	public void muestraPerroDueño(String dueño) { // Busca y muestra los perros del dueño recibido
+	public void muestraPerroDueÃ±o(String dueÃ±o) { // Busca y muestra los perros del dueï¿½o recibido
 		String perros = "";
 		for (Perro perro : perreras) {
-			if (perro.getAmo().equals(dueño))
+			if (perro.getAmo().equals(dueÃ±o))
 				perros += perro.getNombre() + "\n";
 		}
-		JOptionPane.showMessageDialog(null, perros, "Los perros de: " + dueño, JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, perros, "Los perros de: " + dueÃ±o, JOptionPane.INFORMATION_MESSAGE);
 	}
 
 	public void muestraTodos() { // Muestra todos los perros de la perrera

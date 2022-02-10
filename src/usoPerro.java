@@ -3,30 +3,30 @@ import javax.swing.JOptionPane;
 public class usoPerro {
 
 	public static void main(String[] args) {
-		String[] opciones = { "Salir del menu", "Añadir perro", "Ver los perros de cada dueño",
+		String[] opciones = { "Salir del menu", "Aï¿½adir perro", "Ver los perros de cada dueï¿½o",
 				"Ver todos los perros" };
 		boolean menu = true;
 		Perrera perrera = new Perrera();
 
 		Perro BorderCollie = new Perro("Akira", "Angel", 2, "blanco");
-		perrera.añadePerro(BorderCollie);
+		perrera.aÃ±adePerro(BorderCollie);
 
 		Perro Ratonero = new Perro("Pincho", "Alba", 5, "marron");
-		perrera.añadePerro(Ratonero);
+		perrera.aÃ±adePerro(Ratonero);
 
 		Perro Labrador = new Perro("Ambar", "Tomas", 1, "marron");
-		perrera.añadePerro(Labrador);
+		perrera.aÃ±adePerro(Labrador);
 
 		Perro Chihuahua = new Perro("Rocky", "Enrique", 8, "negro");
-		perrera.añadePerro(Chihuahua);
+		perrera.aÃ±adePerro(Chihuahua);
 
 		while (menu) {
 			int opcion2 = -1;
-			String opcion = (String) JOptionPane.showInputDialog(null, "¿Qué quieres hacer?", "Elige un dueño primero",
+			String opcion = (String) JOptionPane.showInputDialog(null, "ï¿½Quï¿½ quieres hacer?", "Elige un dueï¿½o primero",
 					3, null, opciones, null);
 
-			for (int i = 0; i < opciones.length; i++) // Consigo la posicion del array según lo que has elegido en el
-														// menú
+			for (int i = 0; i < opciones.length; i++) // Consigo la posicion del array segï¿½n lo que has elegido en el
+														// menï¿½
 				if (opciones[i].equals(opcion))
 					opcion2 = i;
 
@@ -40,7 +40,7 @@ public class usoPerro {
 				break;
 
 			case 2:
-				perrera.buscaDueño();
+				perrera.buscaDueÃ±o();
 				break;
 
 			case 3:
