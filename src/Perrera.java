@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
 public class Perrera {
 
@@ -77,6 +77,10 @@ public class Perrera {
 		for(Perro p : perreras)
 			if(p.getNombre().equals(nombre)) return p;
 		return null;
+	}
+	public Perro anadePerroConsola(){
+
+		String PerroNuevo= JOptionPane.showInputDialog(null, "Añade un perro:");
 	}
 	
 

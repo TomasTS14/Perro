@@ -22,7 +22,7 @@ public class usoPerro {
 
 		while (menu) {
 			int opcion2 = -1;
-			String opcion = (String) JOptionPane.showInputDialog(null, "Que quieres hacer?", "Elige un duenio primero",
+			String opcion = (String) JOptionPane.showInputDialog(null, "Que quieres hacer?", "MENU",
 					3, null, opciones, null);
 
 			for (int i = 0; i < opciones.length; i++) // Consigo la posicion del array seg�n lo que has elegido en el
@@ -37,6 +37,7 @@ public class usoPerro {
 				break;
 
 			case 1:
+			String PerroNuevo= JOptionPane.showInputDialog(null, "Añade un perro:");
 				break;
 
 			case 2: // Muestra los perros del due�o elegido
