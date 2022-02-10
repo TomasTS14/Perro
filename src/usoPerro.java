@@ -37,7 +37,7 @@ public class usoPerro {
 				break;
 
 			case 1:
-			String PerroNuevo= JOptionPane.showInputDialog(null, "Añade un perro:");
+			perrera.anadePerro(perrera.anadePerroConsola());
 				break;
 
 			case 2: // Muestra los perros del due�o elegido

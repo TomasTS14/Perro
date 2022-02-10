@@ -80,7 +80,27 @@ public class Perrera {
 	}
 	public Perro anadePerroConsola(){
 
-		String PerroNuevo= JOptionPane.showInputDialog(null, "Añade un perro:");
+		
+		String dueno= JOptionPane.showInputDialog(null, "Tu nombre:");
+		JTextField nombrePeText = new JTextField(5);
+		JTextField edadText= new JTextField(5);
+		JTextField colorText= new JTextField(5);
+
+		JPanel creaPerro = new JPanel();
+		creaPerro.add(new JLabel("nombre: "));
+		creaPerro.add(nombrePeText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+		creaPerro.add(new JLabel("edad: "));
+		creaPerro.add(edadText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+		creaPerro.add(new JLabel("color: "));
+		creaPerro.add(colorText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+
+		 JOptionPane.showConfirmDialog(null,creaPerro,"Datos del perro: ", JOptionPane.OK_CANCEL_OPTION);
+		 Perro perroNuevo = new Perro(nombrePeText.getText(), dueno, Integer.parseInt(edadText.getText()), colorText.getText());
+		return perroNuevo;
+		
 	}
 	
 
