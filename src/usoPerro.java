@@ -11,16 +11,18 @@ public class usoPerro {
 		Perrera perrera = new Perrera();
 
 		Perro BorderCollie = new Perro("Akira", "Angel", 2, "blanco");
-		perrera.añadePerro(BorderCollie);
+
+		perrera.anadePerro(BorderCollie);
 
 		Perro Ratonero = new Perro("Pincho", "Alba", 5, "marron");
-		perrera.añadePerro(Ratonero);
+		perrera.anadePerro(Ratonero);
 
 		Perro Labrador = new Perro("Ambar", "Tomas", 1, "marron");
-		perrera.añadePerro(Labrador);
+		perrera.anadePerro(Labrador);
 
 		Perro Chihuahua = new Perro("Rocky", "Enrique", 8, "negro");
-		perrera.añadePerro(Chihuahua);
+		perrera.anadePerro(Chihuahua);
+
 
 		while (menu) {
 			int opcion2 = -1;
@@ -43,7 +45,7 @@ public class usoPerro {
 
 
 			case 2: // Muestra los perros del due�o elegido
-				perrera.buscaDueño();
+				perrera.buscaDueno();
 				break;
 
 			case 3: // Muestra todos los perros
