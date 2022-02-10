@@ -3,8 +3,10 @@ import javax.swing.JOptionPane;
 public class usoPerro {
 
 	public static void main(String[] args) {
-		String[] opciones = { "Salir del menu", "A�adir perro", "Ver los perros de cada due�o",
-				"Ver todos los perros" };
+
+		String[] opciones = { "Salir del menu", "A�adir perro", "Ver los perros de cada due�o", "Ver todos los perros",
+				"Ordenar perros por su nombre", "Atacar a un perro" };
+
 		boolean menu = true;
 		Perrera perrera = new Perrera();
 
@@ -32,19 +34,30 @@ public class usoPerro {
 
 			switch (opcion2) {
 
-			case 0:
+			case 0: // Sale del men�
 				menu = false;
 				break;
 
 			case 1:
 				break;
 
-			case 2:
+
+			case 2: // Muestra los perros del due�o elegido
 				perrera.buscaDueño();
 				break;
 
-			case 3:
+			case 3: // Muestra todos los perros
 				perrera.muestraTodos();
+				break;
+
+			case 4: // Ordena por nombre del perro
+				perrera.ordenaNombres();
+				perrera.muestraTodos();
+				break;
+
+			case 5: // Atacar a un perro
+				if (!perrera.estaVacia())
+					perrera.atacaPerro();
 				break;
 			}
 

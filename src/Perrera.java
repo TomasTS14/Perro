@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+
 import javax.swing.JOptionPane;
 
 public class Perrera {
@@ -45,4 +47,37 @@ public class Perrera {
 
 		JOptionPane.showMessageDialog(null, perros, "Tenemos estos perros:", JOptionPane.INFORMATION_MESSAGE);
 	}
+	
+	public void ordenaNombres() {
+		Collections.sort(perreras);
+	}
+	
+	public boolean estaVacia() {
+		if(perreras.size() == 0) return true;
+		return false;
+	}
+	
+	public void atacaPerro() {   //Un perro ataca a otro perro
+		String[] array = new String [perreras.size()];	
+		for(int i=0;i<perreras.size();i++) //Relleno el array para poder elegir en el desplegable
+			array[i] = perreras.get(i).getNombre();
+		
+		Perro atacante = buscaPerro((String)JOptionPane.showInputDialog(null, "Elige el perro que muerde", "Perro:", 3,null, array, null));
+		Perro mordido = buscaPerro((String)JOptionPane.showInputDialog(null, "Elige el perro que es mordido", "Perro:", 3,null, array, null));	
+		
+		atacante.muerde(mordido);  //Ataque
+		
+		if(!mordido.getVivo()) { //Si ha muerto o si está herido
+			JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " +atacante.getNombre() + " y ha muerto");
+			perreras.remove(mordido);
+		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora está herido");
+	} 
+	
+	public Perro buscaPerro(String nombre) { //Encuentra y devuelve el perro por su nombre
+		for(Perro p : perreras)
+			if(p.getNombre().equals(nombre)) return p;
+		return null;
+	}
+	
+
 }
