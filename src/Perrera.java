@@ -70,7 +70,7 @@ public class Perrera {
 		if(!mordido.getVivo()) { //Si ha muerto o si est� herido
 			JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " +atacante.getNombre() + " y ha muerto");
 			perreras.remove(mordido);
-		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora est� herido");
+		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora esta herido");
 	} 
 	
 	public Perro buscaPerro(String nombre) { //Encuentra y devuelve el perro por su nombre
