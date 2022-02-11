@@ -79,5 +79,13 @@ public class Perro implements Comparable <Perro>{
 		return this.nombre.compareTo(o.nombre);
 	}
 
+	@Override
+	public String toString() {
+		return "Perro [nombre=" + nombre + ", amo=" + amo + ", edad=" + edad + ", color=" + color + ", herido=" + herido
+				+ ", vivo=" + vivo + "]";
+	}
+	
+	
+
 
 }

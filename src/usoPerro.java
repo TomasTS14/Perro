@@ -3,12 +3,15 @@ import javax.swing.JOptionPane;
 public class usoPerro {
 
 	public static void main(String[] args) {
+
 		String[] opciones = { "Salir del menu", "Aniadir perro", "Ver los perros de cada duenio", "Ver todos los perros",
 				"Ordenar perros por su nombre", "Atacar a un perro" };
+
 		boolean menu = true;
 		Perrera perrera = new Perrera();
 
 		Perro BorderCollie = new Perro("Akira", "Angel", 2, "blanco");
+
 		perrera.anadePerro(BorderCollie);
 
 		Perro Ratonero = new Perro("Pincho", "Alba", 5, "marron");
@@ -20,9 +23,10 @@ public class usoPerro {
 		Perro Chihuahua = new Perro("Rocky", "Enrique", 8, "negro");
 		perrera.anadePerro(Chihuahua);
 
+
 		while (menu) {
 			int opcion2 = -1;
-			String opcion = (String) JOptionPane.showInputDialog(null, "Que quieres hacer?", "Elige un duenio primero",
+			String opcion = (String) JOptionPane.showInputDialog(null, "Que quieres hacer?", "MENU",
 					3, null, opciones, null);
 
 			for (int i = 0; i < opciones.length; i++) // Consigo la posicion del array seg�n lo que has elegido en el
@@ -37,7 +41,9 @@ public class usoPerro {
 				break;
 
 			case 1:
+			perrera.anadePerro(perrera.anadePerroConsola());
 				break;
+
 
 			case 2: // Muestra los perros del due�o elegido
 				perrera.buscaDueno();
@@ -56,8 +62,9 @@ public class usoPerro {
 				if (!perrera.estaVacia())
 					perrera.atacaPerro();
 				break;
+			
+			default :
 			}
-
 		}
 
 	}

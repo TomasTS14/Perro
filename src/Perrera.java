@@ -1,16 +1,20 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.Image;
 
 public class Perrera {
 
-	private ArrayList<Perro> perreras;
+	private List<Perro> perreras;
 
 	public Perrera() {
+		BBDD conexion = new BBDD();
 
-		perreras = new ArrayList<>();
+		perreras = conexion.getAllPerros("select * from perros");
 	}
+
 
 	public void anadePerro(Perro nuevo) {
 		perreras.add(nuevo);
@@ -19,6 +23,7 @@ public class Perrera {
 	public void eliminaPerro(Perro p) {
 		perreras.remove(p);
 	}
+
 
 	public void buscaDueno() {
 		String[] duenos = new String[perreras.size()]; // Creo un array de los duenios (en ejecucion)
@@ -38,6 +43,7 @@ public class Perrera {
 				perros += perro.getNombre() + "\n";
 		}
 		JOptionPane.showMessageDialog(null, perros, "Los perros de: " + dueno, JOptionPane.INFORMATION_MESSAGE);
+
 	}
 
 	public void muestraTodos() { // Muestra todos los perros de la perrera
@@ -58,6 +64,12 @@ public class Perrera {
 	}
 	
 	public void atacaPerro() {   //Un perro ataca a otro perro
+
+		ImageIcon iconoPerro = new ImageIcon(Perrera.class.getResource("/dog.png"));
+		Image iconoPerroaCambiar= iconoPerro.getImage();
+		Image iconoPerroFinal = iconoPerroaCambiar.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+		iconoPerro= new ImageIcon(iconoPerroFinal);
+		
 		String[] array = new String [perreras.size()];	
 		for(int i=0;i<perreras.size();i++) //Relleno el array para poder elegir en el desplegable
 			array[i] = perreras.get(i).getNombre();
@@ -65,6 +77,7 @@ public class Perrera {
 		Perro atacante = buscaPerro((String)JOptionPane.showInputDialog(null, "Elige el perro que muerde", "Perro:", 3,null, array, null));
 		Perro mordido = buscaPerro((String)JOptionPane.showInputDialog(null, "Elige el perro que es mordido", "Perro:", 3,null, array, null));	
 		
+		JOptionPane.showMessageDialog(null, ("has mordido a "+mordido.getNombre()),"!!!!!",JOptionPane.INFORMATION_MESSAGE, iconoPerro);
 		atacante.muerde(mordido);  //Ataque
 		
 		if(!mordido.getVivo()) { //Si ha muerto o si esta herido
@@ -77,6 +90,30 @@ public class Perrera {
 		for(Perro p : perreras)
 			if(p.getNombre().equals(nombre)) return p;
 		return null;
+	}
+	public Perro anadePerroConsola(){
+
+		
+		String dueno= JOptionPane.showInputDialog(null, "Tu nombre:");
+		JTextField nombrePeText = new JTextField(5);
+		JTextField edadText= new JTextField(5);
+		JTextField colorText= new JTextField(5);
+
+		JPanel creaPerro = new JPanel();
+		creaPerro.add(new JLabel("nombre: "));
+		creaPerro.add(nombrePeText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+		creaPerro.add(new JLabel("edad: "));
+		creaPerro.add(edadText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+		creaPerro.add(new JLabel("color: "));
+		creaPerro.add(colorText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+
+		 JOptionPane.showConfirmDialog(null,creaPerro,"Datos del perro: ", JOptionPane.OK_CANCEL_OPTION);
+		 Perro perroNuevo = new Perro(nombrePeText.getText(), dueno, Integer.parseInt(edadText.getText()), colorText.getText());
+		return perroNuevo;
+		
 	}
 	
 
