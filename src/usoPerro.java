@@ -4,7 +4,7 @@ public class usoPerro {
 
 	public static void main(String[] args) {
 
-		String[] opciones = { "Salir del menu", "Añadir perro", "Ver los perros de cada dueño", "Ver todos los perros",
+		String[] opciones = { "Salir del menu", "Aniadir perro", "Ver los perros de cada duenio", "Ver todos los perros",
 				"Ordenar perros por su nombre", "Atacar a un perro" };
 
 		boolean menu = true;
@@ -26,7 +26,7 @@ public class usoPerro {
 
 		while (menu) {
 			int opcion2 = -1;
-			String opcion = (String) JOptionPane.showInputDialog(null, "�Qu� quieres hacer?", "Elige un due�o primero",
+			String opcion = (String) JOptionPane.showInputDialog(null, "Que quieres hacer?", "MENU",
 					3, null, opciones, null);
 
 			for (int i = 0; i < opciones.length; i++) // Consigo la posicion del array seg�n lo que has elegido en el
@@ -41,6 +41,7 @@ public class usoPerro {
 				break;
 
 			case 1:
+			perrera.anadePerro(perrera.anadePerroConsola());
 				break;
 
 
@@ -61,6 +62,8 @@ public class usoPerro {
 				if (!perrera.estaVacia())
 					perrera.atacaPerro();
 				break;
+			
+			default :
 			}
 		}
 

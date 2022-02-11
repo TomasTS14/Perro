@@ -1,15 +1,18 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.Image;
 
 public class Perrera {
 
-	private ArrayList<Perro> perreras;
+	private List<Perro> perreras;
 
 	public Perrera() {
+		BBDD conexion = new BBDD();
 
-		perreras = new ArrayList<>();
+		perreras = conexion.getAllPerros("select * from perros");
 	}
 
 
@@ -23,9 +26,9 @@ public class Perrera {
 
 
 	public void buscaDueno() {
-		String[] duenos = new String[perreras.size()]; // Creo un array de los due�os (en ejecuci�n)
+		String[] duenos = new String[perreras.size()]; // Creo un array de los duenios (en ejecucion)
 
-		for (int i = 0; i < duenos.length; i++) // Introduzco los due�os en tiempo de ejecuci�n
+		for (int i = 0; i < duenos.length; i++) // Introduzco los duenios en tiempo de ejecucinin
 			duenos[i] = (String) perreras.get(i).getAmo();
 
 		String dueno = (String) JOptionPane.showInputDialog(null, "Elige un dueno primero", "Dueno:", 3,
@@ -33,7 +36,7 @@ public class Perrera {
 		muestraPerroDueno(dueno);
 	}
 
-	public void muestraPerroDueno(String dueno) { // Busca y muestra los perros del due�o recibido
+	public void muestraPerroDueno(String dueno) { // Busca y muestra los perros del duenio recibido
 		String perros = "";
 		for (Perro perro : perreras) {
 			if (perro.getAmo().equals(dueno))
@@ -61,6 +64,12 @@ public class Perrera {
 	}
 	
 	public void atacaPerro() {   //Un perro ataca a otro perro
+
+		ImageIcon iconoPerro = new ImageIcon(Perrera.class.getResource("/dog.png"));
+		Image iconoPerroaCambiar= iconoPerro.getImage();
+		Image iconoPerroFinal = iconoPerroaCambiar.getScaledInstance(120, 120,  java.awt.Image.SCALE_SMOOTH);
+		iconoPerro= new ImageIcon(iconoPerroFinal);
+		
 		String[] array = new String [perreras.size()];	
 		for(int i=0;i<perreras.size();i++) //Relleno el array para poder elegir en el desplegable
 			array[i] = perreras.get(i).getNombre();
@@ -68,18 +77,43 @@ public class Perrera {
 		Perro atacante = buscaPerro((String)JOptionPane.showInputDialog(null, "Elige el perro que muerde", "Perro:", 3,null, array, null));
 		Perro mordido = buscaPerro((String)JOptionPane.showInputDialog(null, "Elige el perro que es mordido", "Perro:", 3,null, array, null));	
 		
+		JOptionPane.showMessageDialog(null, ("has mordido a "+mordido.getNombre()),"!!!!!",JOptionPane.INFORMATION_MESSAGE, iconoPerro);
 		atacante.muerde(mordido);  //Ataque
 		
-		if(!mordido.getVivo()) { //Si ha muerto o si est� herido
+		if(!mordido.getVivo()) { //Si ha muerto o si esta herido
 			JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " +atacante.getNombre() + " y ha muerto");
 			perreras.remove(mordido);
-		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora est� herido");
+		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora esta herido");
 	} 
 	
 	public Perro buscaPerro(String nombre) { //Encuentra y devuelve el perro por su nombre
 		for(Perro p : perreras)
 			if(p.getNombre().equals(nombre)) return p;
 		return null;
+	}
+	public Perro anadePerroConsola(){
+
+		
+		String dueno= JOptionPane.showInputDialog(null, "Tu nombre:");
+		JTextField nombrePeText = new JTextField(5);
+		JTextField edadText= new JTextField(5);
+		JTextField colorText= new JTextField(5);
+
+		JPanel creaPerro = new JPanel();
+		creaPerro.add(new JLabel("nombre: "));
+		creaPerro.add(nombrePeText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+		creaPerro.add(new JLabel("edad: "));
+		creaPerro.add(edadText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+		creaPerro.add(new JLabel("color: "));
+		creaPerro.add(colorText);
+		creaPerro.add(Box.createHorizontalStrut(15));
+
+		 JOptionPane.showConfirmDialog(null,creaPerro,"Datos del perro: ", JOptionPane.OK_CANCEL_OPTION);
+		 Perro perroNuevo = new Perro(nombrePeText.getText(), dueno, Integer.parseInt(edadText.getText()), colorText.getText());
+		return perroNuevo;
+		
 	}
 	
 
