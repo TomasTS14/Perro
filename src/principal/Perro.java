@@ -86,8 +86,7 @@ public class Perro implements Comparable <Perro>{
 
 	@Override
 	public String toString() {
-		return "Perro [nombre=" + nombre + ", amo=" + amo + ", edad=" + edad + ", color=" + color + ", herido=" + herido
-				+ ", vivo=" + vivo + "]";
+		return nombre+"                "+ amo +"                "+edad +"                "+ color +"                "+herido+"\n";
 	}
 	
 
