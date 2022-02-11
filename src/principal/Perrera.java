@@ -1,27 +1,31 @@
+package principal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
 import javax.swing.*;
+import BaseDeDatos.BBDD;
 import java.awt.Image;
 
 public class Perrera {
 
 	private List<Perro> perreras;
+	static BBDD miconexion;
 
 	public Perrera() {
-		BBDD conexion = new BBDD();
+		miconexion = new BBDD();
 
-		perreras = conexion.getAllPerros("select * from perros");
+		perreras = miconexion.getAllPerros();
 	}
 
 
 	public void anadePerro(Perro nuevo) {
 		perreras.add(nuevo);
+		miconexion.insertaPerro(nuevo);
 	}
 
-	public void eliminaPerro(Perro p) {
+	public void eliminaPerro(Perro p) { 
 		perreras.remove(p);
+		miconexion.eliminaPerro(p);
 	}
 
 
@@ -83,6 +87,7 @@ public class Perrera {
 		if(!mordido.getVivo()) { //Si ha muerto o si esta herido
 			JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " +atacante.getNombre() + " y ha muerto");
 			perreras.remove(mordido);
+			miconexion.eliminaPerro(mordido);
 		}else JOptionPane.showMessageDialog(null, mordido.getNombre() + " ha sido atacado por " + atacante.getNombre() + " ,ahora esta herido");
 	} 
 	

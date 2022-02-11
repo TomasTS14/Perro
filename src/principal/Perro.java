@@ -1,3 +1,4 @@
+package principal;
 public class Perro implements Comparable <Perro>{
 	private String nombre;
 	private String amo;

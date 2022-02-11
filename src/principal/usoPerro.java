@@ -1,3 +1,4 @@
+package principal;
 import javax.swing.JOptionPane;
 
 public class usoPerro {
@@ -9,19 +10,6 @@ public class usoPerro {
 
 		boolean menu = true;
 		Perrera perrera = new Perrera();
-
-		Perro BorderCollie = new Perro("Akira", "Angel", 2, "blanco");
-
-		perrera.anadePerro(BorderCollie);
-
-		Perro Ratonero = new Perro("Pincho", "Alba", 5, "marron");
-		perrera.anadePerro(Ratonero);
-
-		Perro Labrador = new Perro("Ambar", "Tomas", 1, "marron");
-		perrera.anadePerro(Labrador);
-
-		Perro Chihuahua = new Perro("Rocky", "Enrique", 8, "negro");
-		perrera.anadePerro(Chihuahua);
 
 
 		while (menu) {
