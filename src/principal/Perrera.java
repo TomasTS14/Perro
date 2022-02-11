@@ -11,7 +11,7 @@ public class Perrera {
 
 	private List<Perro> perreras;
 	static BBDD miconexion;
-	static ImageIcon iconoPerro;
+
 
 	public Perrera() {
 		miconexion = new BBDD();
@@ -51,14 +51,10 @@ public class Perrera {
 	}
 
 	public void muestraTodos() { //FIXME Muestra todos los perros de la perrera 
-		String perros = "Nombre:          Amo:            Edad:            Color:      Herido:\n\n";
+		String perros = "Nombre:          Amo:            Edad:            Color:              Herido:\n\n";
 
 		for (Perro perro : perreras)
-			perros += "-" + perro.getNombre() + "            " + perro.getAmo() + "            " + perro.getEdad()
-					+ "            " + perro.getColor() + "            " + perro.getHerido() + "              \n";
-		// perros += "-"+ perro.getNombre() +
-		// perros.format("%20s,%20s,%20s",perro.getAmo(),perro.getEdad(),perro.getColor())
-		// +"\n";
+			perros += perro;
 
 		JOptionPane.showMessageDialog(null, perros, "Tenemos estos perros:", JOptionPane.INFORMATION_MESSAGE);
 	}
@@ -79,14 +75,15 @@ public class Perrera {
 			array[i] = perreras.get(i).getNombre();
 		return array;
 	}
-
-	public void atacaPerro() { // Un perro ataca a otro perro
-
-		iconoPerro = new ImageIcon(Perrera.class.getResource("/dog.png"));
+	
+	public ImageIcon devuelveIcono() {
+		ImageIcon iconoPerro = new ImageIcon(Perrera.class.getResource("/images/dog.png"));
 		Image iconoPerroaCambiar = iconoPerro.getImage();
 		Image iconoPerroFinal = iconoPerroaCambiar.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
-		iconoPerro = new ImageIcon(iconoPerroFinal);
+		return iconoPerro = new ImageIcon(iconoPerroFinal);
+	}
 
+	public void atacaPerro() { // Un perro ataca a otro perro
 		Perro atacante = buscaPerro((String) JOptionPane.showInputDialog(null, "Elige el perro que muerde", "Perro:", 3,
 				null, rellenaArray(), null));
 		Perro mordido = buscaPerro((String) JOptionPane.showInputDialog(null, "Elige el perro que es mordido", "Perro:",
@@ -95,12 +92,12 @@ public class Perrera {
 		atacante.muerde(mordido); // Ataque
 
 		if (!mordido.getVivo()) { // Si ha muerto o si esta herido
-			JOptionPane.showMessageDialog(null, (mordido.getNombre()) + " HA MUERTO !!!", "!!!!!",JOptionPane.INFORMATION_MESSAGE, iconoPerro);
+			JOptionPane.showMessageDialog(null, (mordido.getNombre()) + " HA MUERTO !!!", "!!!!!",JOptionPane.INFORMATION_MESSAGE, devuelveIcono());
 			perreras.remove(mordido);
 			miconexion.eliminaPerro(mordido);
 		} else
 			JOptionPane.showMessageDialog(null,
-					(atacante.getNombre() + " ha mordido a " + mordido.getNombre()) + " y está herido !!!", "!!!!!",JOptionPane.INFORMATION_MESSAGE, iconoPerro);
+					(atacante.getNombre() + " ha mordido a " + mordido.getNombre()) + " y está herido !!!", "!!!!!",JOptionPane.INFORMATION_MESSAGE, devuelveIcono());
 	}
 
 	public Perro buscaPerro(String nombre) { // Encuentra y devuelve el perro por su nombre
@@ -135,12 +132,7 @@ public class Perrera {
 
 	}
 	
-	public Perro procrearPerro() {
-		iconoPerro = new ImageIcon(Perrera.class.getResource("/dog.png"));
-		Image iconoPerroaCambiar = iconoPerro.getImage();
-		Image iconoPerroFinal = iconoPerroaCambiar.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
-		iconoPerro = new ImageIcon(iconoPerroFinal);
-		
+	public Perro procrearPerro() {		
 		String nombreMacho = (String) JOptionPane.showInputDialog(null, "Elige un perro", "Perro:", 3,
 				null, rellenaArray(), null);
 		String nombreHembra =(String) JOptionPane.showInputDialog(null, "Elige otro perro", "Perro:",
@@ -151,24 +143,21 @@ public class Perrera {
 		
 		Perro nuevo = new Perro(nuevoNombre,padre.getAmo(),0,padre.getColor());
 		JOptionPane.showMessageDialog(null,
-				"Ha nacido un nuevo Perro !!! \n se llama: " + nuevo.getNombre(), "!!!!!",JOptionPane.INFORMATION_MESSAGE, iconoPerro);
+				"Ha nacido un nuevo Perro !!! \n se llama: " + nuevo.getNombre(), "!!!!!",JOptionPane.INFORMATION_MESSAGE, devuelveIcono());
 		return nuevo;
 	}
 	
-	public String creaNombre(String nombremacho,String nombrehembra) { //Devuelve el nombre del nuevo perro (HIJO)
+	public String creaNombre(String nombremacho,String nombrehembra) { //FIXME Devuelve el nombre del nuevo perro (HIJO)
 		String hom = ""; 
 		String hem = "";
-		String nombrehijo;
-		for(int i=0;i<3;i++) {
+		
+		for(int i=0;i<3;i++) 
 			hom += String.valueOf(nombremacho.charAt(i));
 
-		}
-		for(int i=2;i<nombrehembra.length();i++) {
+		for(int i=2;i<nombrehembra.length();i++) 
 			hem += String.valueOf(nombrehembra.charAt(i));
-
-		} 
-		nombrehijo = hom + hem; //Este sera¡ el nombre del nuevo perro (hijo) (concatenamos silabas)
-		return nombrehijo;
+		
+		return hom + hem; //Este sera el nombre del nuevo perro (hijo) (concatenamos silabas)
 	}
 
 }
