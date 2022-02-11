@@ -1,16 +1,18 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import javax.swing.*;
 import java.awt.Image;
 
 public class Perrera {
 
-	private ArrayList<Perro> perreras;
+	private List<Perro> perreras;
 
 	public Perrera() {
+		BBDD conexion = new BBDD();
 
-		perreras = new ArrayList<>();
+		perreras = conexion.getAllPerros("select * from perros");
 	}
 
 	public void anadePerro(Perro nuevo) {
