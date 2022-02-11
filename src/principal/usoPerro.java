@@ -6,7 +6,7 @@ public class usoPerro {
 	public static void main(String[] args) {
 
 		String[] opciones = { "Salir del menu", "Aniadir perro", "Ver los perros de cada duenio", "Ver todos los perros",
-				"Ordenar perros por su nombre", "Atacar a un perro" };
+				"Ordenar perros por su nombre", "Atacar a un perro" ,"Aparear a dos perros"};
 
 		boolean menu = true;
 		Perrera perrera = new Perrera();
@@ -49,6 +49,10 @@ public class usoPerro {
 			case 5: // Atacar a un perro
 				if (!perrera.estaVacia())
 					perrera.atacaPerro();
+				break;
+				
+			case 6:
+				perrera.anadePerro(perrera.procrearPerro());
 				break;
 			
 			default :

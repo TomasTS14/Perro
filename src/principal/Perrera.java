@@ -11,6 +11,7 @@ public class Perrera {
 
 	private List<Perro> perreras;
 	static BBDD miconexion;
+	static ImageIcon iconoPerro;
 
 	public Perrera() {
 		miconexion = new BBDD();
@@ -71,22 +72,25 @@ public class Perrera {
 			return true;
 		return false;
 	}
+	
+	public String[] rellenaArray() { //Devuelve un array con los perros
+		String[] array = new String[perreras.size()];
+		for (int i = 0; i < perreras.size(); i++) // Relleno el array para poder elegir en el desplegable
+			array[i] = perreras.get(i).getNombre();
+		return array;
+	}
 
 	public void atacaPerro() { // Un perro ataca a otro perro
 
-		ImageIcon iconoPerro = new ImageIcon(Perrera.class.getResource("/dog.png"));
+		iconoPerro = new ImageIcon(Perrera.class.getResource("/dog.png"));
 		Image iconoPerroaCambiar = iconoPerro.getImage();
 		Image iconoPerroFinal = iconoPerroaCambiar.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
 		iconoPerro = new ImageIcon(iconoPerroFinal);
 
-		String[] array = new String[perreras.size()];
-		for (int i = 0; i < perreras.size(); i++) // Relleno el array para poder elegir en el desplegable
-			array[i] = perreras.get(i).getNombre();
-
 		Perro atacante = buscaPerro((String) JOptionPane.showInputDialog(null, "Elige el perro que muerde", "Perro:", 3,
-				null, array, null));
+				null, rellenaArray(), null));
 		Perro mordido = buscaPerro((String) JOptionPane.showInputDialog(null, "Elige el perro que es mordido", "Perro:",
-				3, null, array, null));
+				3, null, rellenaArray(), null));
 
 		atacante.muerde(mordido); // Ataque
 
@@ -129,6 +133,42 @@ public class Perrera {
 				colorText.getText());
 		return perroNuevo;
 
+	}
+	
+	public Perro procrearPerro() {
+		iconoPerro = new ImageIcon(Perrera.class.getResource("/dog.png"));
+		Image iconoPerroaCambiar = iconoPerro.getImage();
+		Image iconoPerroFinal = iconoPerroaCambiar.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
+		iconoPerro = new ImageIcon(iconoPerroFinal);
+		
+		String nombreMacho = (String) JOptionPane.showInputDialog(null, "Elige un perro", "Perro:", 3,
+				null, rellenaArray(), null);
+		String nombreHembra =(String) JOptionPane.showInputDialog(null, "Elige otro perro", "Perro:",
+				3, null, rellenaArray(), null);
+		
+		String nuevoNombre = creaNombre(nombreMacho,nombreHembra);
+		Perro padre = buscaPerro(nombreMacho);
+		
+		Perro nuevo = new Perro(nuevoNombre,padre.getAmo(),0,padre.getColor());
+		JOptionPane.showMessageDialog(null,
+				"Ha nacido un nuevo Perro !!! \n se llama: " + nuevo.getNombre(), "!!!!!",JOptionPane.INFORMATION_MESSAGE, iconoPerro);
+		return nuevo;
+	}
+	
+	public String creaNombre(String nombremacho,String nombrehembra) { //Devuelve el nombre del nuevo perro (HIJO)
+		String hom = ""; 
+		String hem = "";
+		String nombrehijo;
+		for(int i=0;i<3;i++) {
+			hom += String.valueOf(nombremacho.charAt(i));
+
+		}
+		for(int i=2;i<nombrehembra.length();i++) {
+			hem += String.valueOf(nombrehembra.charAt(i));
+
+		} 
+		nombrehijo = hom + hem; //Este sera¡ el nombre del nuevo perro (hijo) (concatenamos silabas)
+		return nombrehijo;
 	}
 
 }
