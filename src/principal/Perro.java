@@ -33,6 +33,10 @@ public class Perro implements Comparable <Perro>{
 	public boolean getVivo() {
 		return vivo;
 	}
+	
+	public boolean getHerido() {
+		return herido;
+	}
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;

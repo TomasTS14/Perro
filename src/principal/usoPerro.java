@@ -17,14 +17,14 @@ public class usoPerro {
 			String opcion = (String) JOptionPane.showInputDialog(null, "Que quieres hacer?", "MENU",
 					3, null, opciones, null);
 
-			for (int i = 0; i < opciones.length; i++) // Consigo la posicion del array seg�n lo que has elegido en el
-														// men�
+			for (int i = 0; i < opciones.length; i++) // Consigo la posicion del array segun lo que has elegido en el
+														// menu
 				if (opciones[i].equals(opcion))
 					opcion2 = i;
 
 			switch (opcion2) {
 
-			case 0: // Sale del men�
+			case 0: // Sale del menu
 				menu = false;
 				break;
 
