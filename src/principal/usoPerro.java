@@ -29,11 +29,11 @@ public class usoPerro {
 				break;
 
 			case 1:
-			perrera.anadePerro(perrera.anadePerroConsola());
+				perrera.anadePerro(perrera.anadePerroConsola());
 				break;
 
 
-			case 2: // Muestra los perros del due�o elegido
+			case 2: // Muestra los perros del duenio elegido
 				perrera.buscaDueno();
 				break;
 
