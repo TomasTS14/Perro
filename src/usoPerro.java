@@ -4,7 +4,7 @@ public class usoPerro {
 
 	public static void main(String[] args) {
 
-		String[] opciones = { "Salir del menu", "A�adir perro", "Ver los perros de cada due�o", "Ver todos los perros",
+		String[] opciones = { "Salir del menu", "Añadir perro", "Ver los perros de cada dueño", "Ver todos los perros",
 				"Ordenar perros por su nombre", "Atacar a un perro" };
 
 		boolean menu = true;
@@ -62,7 +62,6 @@ public class usoPerro {
 					perrera.atacaPerro();
 				break;
 			}
-
 		}
 
 	}
