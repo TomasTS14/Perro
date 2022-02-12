@@ -9,8 +9,9 @@ public class experimentos {
         
         TiposPerro tipos= new TiposPerro();
 
-        tipos.getPanel();
+        String color=tipos.getPanel();
 
+        System.out.println(color);
 
     }
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.*;
 import BaseDeDatos.BBDD;
 import java.awt.Image;
-
+import Paneles.*;
 public class Perrera {
 
 	private List<Perro> perreras;
@@ -97,7 +97,7 @@ public class Perrera {
 			miconexion.eliminaPerro(mordido);
 		} else
 			JOptionPane.showMessageDialog(null,
-					(atacante.getNombre() + " ha mordido a " + mordido.getNombre()) + " y está herido !!!", "!!!!!",JOptionPane.INFORMATION_MESSAGE, devuelveIcono());
+					(atacante.getNombre() + " ha mordido a " + mordido.getNombre()) + " y estï¿½ herido !!!", "!!!!!",JOptionPane.INFORMATION_MESSAGE, devuelveIcono());
 	}
 
 	public Perro buscaPerro(String nombre) { // Encuentra y devuelve el perro por su nombre
@@ -121,13 +121,15 @@ public class Perrera {
 		creaPerro.add(new JLabel("edad: "));
 		creaPerro.add(edadText);
 		creaPerro.add(Box.createHorizontalStrut(15));
-		creaPerro.add(new JLabel("color: "));
-		creaPerro.add(colorText);
-		creaPerro.add(Box.createHorizontalStrut(15));
+		
 
 		JOptionPane.showConfirmDialog(null, creaPerro, "Datos del perro: ", JOptionPane.OK_CANCEL_OPTION);
+		TiposPerro colorTipo= new TiposPerro();
+
+		String color=colorTipo.getPanel();
+
 		Perro perroNuevo = new Perro(nombrePeText.getText(), dueno, Integer.parseInt(edadText.getText()),
-				colorText.getText());
+				color);
 		return perroNuevo;
 
 	}
