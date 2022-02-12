@@ -33,7 +33,9 @@ public class Perrera {
 		miconexion = new BBDD();
 		perreras = miconexion.getAllPerros();
 		nuevoCliente = new Cliente(); // Creo un nuevo cliente
-
+		String usuario = JOptionPane.showInputDialog("Introduce tu nick");
+		nuevoCliente.usuario(usuario);
+		
 	}
 
 	public void anadePerro(Perro nuevo) {
@@ -182,5 +184,7 @@ public class Perrera {
 
 		return hom + hem; // Este sera el nombre del nuevo perro (hijo) (concatenamos silabas)
 	}
-
+	public void usuariosConectados() {
+		nuevoCliente.devuelveUsuarios();
+	}
 }

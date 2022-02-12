@@ -11,12 +11,11 @@ public class UsoPerro {
 
 		
 		String[] opciones = { "Salir del menu", "Aniadir perro", "Ver los perros de cada duenio", "Ver todos los perros",
-				"Ordenar perros por su nombre", "Atacar a un perro" ,"Aparear a dos perros"};
+				"Ordenar perros por su nombre", "Atacar a un perro" ,"Aparear a dos perros","Ver usuarios conectados"};
 
 		boolean menu = true;
 		Perrera perrera = new Perrera();
-
-
+		
 		while (menu) {
 			int opcion2 = -1;
 			String opcion = (String) JOptionPane.showInputDialog(null, "Que quieres hacer?", "MENU",
@@ -59,11 +58,15 @@ public class UsoPerro {
 			case 6:
 				perrera.anadePerro(perrera.procrearPerro());
 				break;
+				
+			case 7:
+				perrera.usuariosConectados();
 			
 			default :
 			}
 		}
 
 	}
+
 
 }
