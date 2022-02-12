@@ -4,8 +4,12 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.UnknownHostException;
 
+import javax.swing.JOptionPane;
+
 import io.socket.client.IO;
 import io.socket.emitter.Emitter;
+
+import principal.Perrera;
 
 public class Cliente {
 		private String evento = "chat mensaje";
@@ -31,6 +35,8 @@ public class Cliente {
 	            for (int i = 0; i < args.length; i++) {
 	                System.out.println(args[i]);
 	            }
+	            
+				JOptionPane.showMessageDialog(null,args, "!!!!!",JOptionPane.INFORMATION_MESSAGE, Perrera.devuelveIcono()); 
 	        }
 	    });
 	    
