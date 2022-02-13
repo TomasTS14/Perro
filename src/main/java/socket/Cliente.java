@@ -15,6 +15,7 @@ public class Cliente {
 		private String evento = "chat mensaje";
 		private String conectado = "usuario nuevo";
 		private String usuariosConectados = "usuarios conectados";
+		private String nombre;
 	    private static io.socket.client.Socket mSocket;
 	    
 	public Cliente() {
@@ -22,14 +23,13 @@ public class Cliente {
 	///////////////////////////////AQUI DEBAJO CONECTAMOS AL SERVIDOR/////////////////////////////
 
 		try {
-	        mSocket = IO.socket("https://servidorclaseperro.herokuapp.com/");
-//			mSocket = IO.socket("http://127.0.0.1:3000/");
+//	        mSocket = IO.socket("https://servidorclaseperro.herokuapp.com/");
+			mSocket = IO.socket("http://127.0.0.1:3000/");
 			System.out.println("Conexion establecida con el servidor");
 	    } catch (URISyntaxException e) {
 	    	System.out.println(e.getMessage());
 	    }
-		
-	
+
 		mSocket.connect(); 	//Conectamos y permanecemos a la escucha
 	    
 	    
@@ -54,10 +54,10 @@ public class Cliente {
 	        		usuarios += args[i] + "\n";
 	        	//	System.out.println(args[i]);
 	        	}
-				JOptionPane.showMessageDialog(null,"SSSSERVIDOR:\n Usuarios conectados: \n" + (String)usuarios , "MENSAJE DEL SERVIDOR:",JOptionPane.INFORMATION_MESSAGE, Perrera.devuelveIcono()); 
+				JOptionPane.showMessageDialog(null,"SERVIDOR:\n Usuarios conectados: \n" + (String)usuarios , "MENSAJE DEL SERVIDOR:",JOptionPane.INFORMATION_MESSAGE, Perrera.devuelveIcono()); 
 	        }
 	    });
-	    
+
 	}
 	///////////////////////////////AQUI DEBAJO LO QUE ENVIAMOS AL SERVIDOR/////////////////////////////
 	public void enviaMensaje(String mensaje) { //Enviamos un mensaje al servidor
@@ -65,6 +65,8 @@ public class Cliente {
 	}
 	public void usuario(String nick) {
 	    mSocket.emit(conectado, nick);
+	    nombre = nick;
+//	    mSocket.disconnect();
 	}
 	public void devuelveUsuarios() {
 	    mSocket.emit(usuariosConectados,usuariosConectados );
