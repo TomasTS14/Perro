@@ -187,4 +187,7 @@ public class Perrera {
 	public void usuariosConectados() {
 		nuevoCliente.devuelveUsuarios();
 	}
+	public void desconectaUsuario() {
+		nuevoCliente.desconectarUsuario();
+	}
 }

@@ -14,6 +14,7 @@ import principal.Perrera;
 public class Cliente {
 		private String evento = "chat mensaje";
 		private String conectado = "usuario nuevo";
+		private String desconectado = "usuario desconectado";
 		private String usuariosConectados = "usuarios conectados";
 		private String nombre;
 	    private static io.socket.client.Socket mSocket;
@@ -66,12 +67,15 @@ public class Cliente {
 	public void usuario(String nick) {
 	    mSocket.emit(conectado, nick);
 	    nombre = nick;
-//	    mSocket.disconnect();
+
 	}
 	public void devuelveUsuarios() {
 	    mSocket.emit(usuariosConectados,usuariosConectados );
 	}
-
+	public void desconectarUsuario() {
+		mSocket.emit(desconectado,nombre);
+		mSocket.disconnect();
+	}
 	
 }
 

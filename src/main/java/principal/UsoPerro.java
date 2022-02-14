@@ -4,7 +4,6 @@ import java.net.*;
 
 import javax.swing.JOptionPane;
 
-
 public class UsoPerro {
 
 	public static void main(String[] args) throws IOException {
@@ -30,6 +29,7 @@ public class UsoPerro {
 
 			case 0: // Sale del menu
 				menu = false;
+				perrera.desconectaUsuario();
 				break;
 
 			case 1:
